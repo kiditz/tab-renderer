@@ -69,3 +69,71 @@ python3 -m http.server
 npm i
 npm run dev
 ```
+
+# URL Parameters Reference
+
+This application uses URL parameters to control YouTube playback and AlphaTab synchronization.
+
+---
+
+## t (YouTube Start Time)
+
+Defines the start position of the YouTube video when loaded.
+
+### Format
+?t=5s
+
+### Example
+https://youtube.com/watch?v=xxxx&t=5s
+
+### Supported formats
+- `30s` → 30 seconds
+- `1m` → 1 minute
+- `1m30s` → 1 minute 30 seconds
+
+---
+
+## offset (AlphaTab Sync Offset)
+
+Adjusts synchronization between YouTube audio and AlphaTab rendering.
+
+### Format
+&offset=1s
+&offset=-0.5s
+
+### Example
+https://youtube.com/watch?v=xxxx&t=5s&offset=1s
+
+---
+
+### How it works
+
+- `offset > 0` → AlphaTab runs ahead (tab is earlier)
+- `offset < 0` → AlphaTab runs behind (audio is ahead)
+
+---
+
+### Use cases
+
+- Fix timing delay between YouTube and AlphaTab
+- Manual sync calibration
+- Compensate browser/audio latency
+- Fine-tune groove and feel accuracy
+
+---
+
+## Example
+
+https://youtube.com/watch?v=xxxx&t=5s&offset=0.8s
+
+Meaning:
+- YouTube starts at 5 seconds
+- AlphaTab is shifted forward by 0.8 seconds for sync alignment
+
+---
+
+## Notes
+
+- This is not an official YouTube parameter
+- It is only interpreted by this application
+- It has no effect on YouTube itself
