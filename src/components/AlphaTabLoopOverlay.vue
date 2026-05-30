@@ -22,7 +22,7 @@ const {
   <div
     class="loop-overlay"
     :style="overlayStyle"
-    @mousedown="beginSelection"
+    @dblclick="beginSelection"
     v-if="store.isLoopSelectionMode"
   >
     <!-- SEGMENTS -->
