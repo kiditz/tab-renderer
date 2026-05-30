@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const {
   loopSegments,
-
+  overlayStyle,
   beginSelection,
   startHandle,
   endHandle,
@@ -17,12 +17,11 @@ const {
   dragStartHandle,
   dragEndHandle,
 } = useAlphaTabLoop(toRef(props, "wrapperRef"));
-
 </script>
 <template>
   <div
     class="loop-overlay"
-    
+    :style="overlayStyle"
     @mousedown="beginSelection"
     v-if="store.isLoopSelectionMode"
   >
@@ -68,6 +67,9 @@ const {
 .loop-overlay {
   position: absolute;
   inset: 0;
+  top: 0;
+  left: 0;
+
   z-index: 999;
 }
 
@@ -114,6 +116,5 @@ const {
 
 .loop-handle.right {
   right: -1px;
-  
 }
 </style>

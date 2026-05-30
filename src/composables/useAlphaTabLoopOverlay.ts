@@ -27,9 +27,27 @@ export function useAlphaTabLoop(wrapperRef: any) {
   const loopSegments = ref<LoopSegment[]>([]);
   const startHandle = ref<HandlePosition | null>(null);
   const endHandle = ref<HandlePosition | null>(null);
+  const overlayStyle = ref<Record<string, string>>({
+    width: "0px",
+    height: "0px",
+  });
 
   function getWrapper() {
     return wrapperRef?.value ?? wrapperRef;
+  }
+  function syncOverlaySize() {
+    const wrapper = getWrapper();
+    if (!wrapper) return;
+
+    const viewport = wrapper.querySelector(".alphaTab") as HTMLElement;
+    if (!viewport) return;
+
+    const rect = viewport.getBoundingClientRect();
+
+    overlayStyle.value = {
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+    };
   }
 
   /*
@@ -80,6 +98,8 @@ export function useAlphaTabLoop(wrapperRef: any) {
    |--------------------------------------------------------------------------
    */
   function rebuildSegments() {
+    console.log("systems", store.api?.boundsLookup?.staffSystems?.length);
+    
     if (!startBeat.value || !endBeat.value) {
       loopSegments.value = [];
       startHandle.value = null;
@@ -207,20 +227,20 @@ export function useAlphaTabLoop(wrapperRef: any) {
     () => store.isLoopSelectionMode,
     (selected) => {
       if (!store.api?.player) return;
-
       if (!selected) {
         store.api.player.playbackRange = null;
-
+        
         startBeat.value = null;
         endBeat.value = null;
-
+        
         loopSegments.value = [];
-
+        
         startHandle.value = null;
         endHandle.value = null;
-
+        
         return;
       }
+      syncOverlaySize()
     },
     { deep: true, immediate: true },
   );
@@ -299,6 +319,7 @@ export function useAlphaTabLoop(wrapperRef: any) {
     startHandle,
     endHandle,
 
+    overlayStyle,
     beginSelection,
 
     dragStartHandle,
