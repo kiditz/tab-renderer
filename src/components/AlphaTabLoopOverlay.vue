@@ -74,7 +74,7 @@ const {
 .loop-segment {
   position: absolute;
 
-  background: rgba(79, 124, 255, 0.15);
+  background: rgba(var(--v-theme-primary), 0.15);
 
   pointer-events: auto;
 }
@@ -83,7 +83,7 @@ const {
   position: absolute;
   width: 14px;
   height: 80px;
-  background: #4f7cff;
+  background: rgb(var(--v-theme-primary));
 
   border-radius: 999px;
 
@@ -105,7 +105,7 @@ const {
 
   border-right: 8px solid transparent;
 
-  border-top: 8px solid #4f7cff;
+  border-top: 8px solid rgb(var(--v-theme-primary));
 }
 
 .loop-handle.left {

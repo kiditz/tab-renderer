@@ -125,7 +125,7 @@ function saveUrl(): void {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
   overflow: hidden;
-  z-index: 9999;
+  z-index: 99;
 }
 
 .yt-float.collapsed {

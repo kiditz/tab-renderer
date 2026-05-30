@@ -2,12 +2,10 @@
 import { computed } from "vue";
 import { usePlayerStore } from "../../stores/playerStore";
 import { PlayerMode } from "@coderline/alphatab";
+import ThemeMenu from "../ThemeMenu.vue";
 
 const store = usePlayerStore();
 
-const actualTempo = computed(() => {
-  return Math.round(store.tempo.number * store.playbackSpeed);
-});
 const isYoutube = computed(
   () =>
     store.api?.settings.player.playerMode == PlayerMode.EnabledExternalMedia,
@@ -26,43 +24,6 @@ const currentLayoutIcon = computed(() => {
 });
 </script>
 <template>
-  <v-menu location="top">
-    <template #activator="{ props }">
-      <v-btn
-        v-bind="props"
-        variant="tonal"
-        append-icon="mdi-chevron-up"
-        class="text-none mr-2"
-      >
-        {{ actualTempo || 1 }} BPM
-      </v-btn>
-    </template>
-    <v-list density="compact">
-      <v-list-item @click="store.setPlaybackSpeed(0.5)">
-        <v-list-item-title>0.5x</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item @click="store.setPlaybackSpeed(0.75)">
-        <v-list-item-title>0.75x</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item @click="store.setPlaybackSpeed(1)">
-        <v-list-item-title>1.0x (Normal)</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item @click="store.setPlaybackSpeed(1.25)">
-        <v-list-item-title>1.25x</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item @click="store.setPlaybackSpeed(1.5)">
-        <v-list-item-title>1.5x</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item @click="store.setPlaybackSpeed(2)">
-        <v-list-item-title>2.0x</v-list-item-title>
-      </v-list-item>
-    </v-list>
-  </v-menu>
   <v-tooltip location="top">
     <template #activator="{ props }">
       <v-btn
@@ -157,4 +118,5 @@ const currentLayoutIcon = computed(() => {
       </v-list-item>
     </v-list>
   </v-menu>
+  <theme-menu/>
 </template>

@@ -3,10 +3,12 @@ import { computed, ref } from "vue";
 import { useDisplay } from "vuetify";
 import TrackMenu from "../TrackMenu.vue";
 import { usePlayerStore } from "../../stores/playerStore.ts";
+import TempoMenu from "./TempoMenu.vue";
 const { smAndDown } = useDisplay();
 const isMobile = computed(() => smAndDown.value);
 const store = usePlayerStore();
 const fileInput = ref<HTMLInputElement | null>(null);
+
 const handleFileUpload = (event: Event) => {
   const target = event.target as HTMLInputElement;
 
@@ -37,5 +39,7 @@ const handleFileUpload = (event: Event) => {
     <div v-if="!isMobile" class="track-metadata">
       <track-menu />
     </div>
+    <tempo-menu  v-if="!isMobile" />
+    
   </div>
 </template>

@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import vuetify from './plugins/vuetify'
 import App from './App.vue'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-
+import "./style.css";
 
 const app = createApp(App)
 

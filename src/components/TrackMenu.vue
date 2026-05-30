@@ -114,4 +114,10 @@ const selectTrack = (track: any) => {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+@media (max-width: 768px) {
+  .track-btn {
+    margin: 20px !important;
+    width: calc(100% - 40px);
+  }
+}
 </style>

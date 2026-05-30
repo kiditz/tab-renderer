@@ -1,12 +1,23 @@
 <!-- src/App.vue -->
 
 <script setup lang="ts">
+import { useTheme } from "vuetify";
 import AlphaTabView from "./components/AlphaTabView.vue";
 
 import PlaybackControls from "./components/PlaybackControls.vue";
 import YoutubeFloatingPanel from "./components/YoutubeFloatingPanel.vue";
+import { useThemeStore } from "./stores/themeStore.ts";
+import { watch } from "vue";
+const themeStore = useThemeStore()
+const vuetifyTheme = useTheme()
+watch(
+  () => themeStore.currentTheme,
+  (theme) => {
+    vuetifyTheme.global.name.value = theme;
+  },
+  { immediate: true }
+);
 
-// import TrackSidebar from "./components/TrackSidebar.vue";
 </script>
 
 <template>

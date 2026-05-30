@@ -41,7 +41,7 @@ export function useAlphaTab(
 
       player: {
         playerMode: PlayerMode.EnabledAutomatic,
-        soundFont: "/soundfont/sonifox.sf3",
+        soundFont: "/soundfont/sonivox.sf3",
         scrollMode: ScrollMode.Continuous,
         scrollElement: wrapperRef.value?.querySelector(".at-viewport"),
       },

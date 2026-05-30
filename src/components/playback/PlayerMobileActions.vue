@@ -20,7 +20,6 @@ const store = usePlayerStore();
         <!-- TRACK MENU -->
         <v-list-subheader>Track Menu</v-list-subheader>
         <track-menu />
-        <v-divider class="my-1" />
 
         <v-divider class="my-1" />
 

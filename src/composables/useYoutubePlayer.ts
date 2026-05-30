@@ -134,6 +134,7 @@ export function useYoutubePlayer(playerElement: Ref<HTMLDivElement | null>) {
 
     syncInterval = window.setInterval(() => {
       if (!ytPlayer || !player.api) return;
+
       const ytTimeMs =
         (ytPlayer.getCurrentTime() -
           startTimeInSeconds.value +
