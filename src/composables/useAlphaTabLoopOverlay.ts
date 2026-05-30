@@ -205,6 +205,9 @@ export function useAlphaTabLoop(wrapperRef: any) {
    | Sync Playback Range
    |--------------------------------------------------------------------------
    */
+  watch(()=> store.zoom, ()=>{
+    syncOverlaySize()
+  })
   watch(
     () => store.loopRange,
     (newRange) => {
