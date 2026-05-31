@@ -163,7 +163,7 @@ export const usePlayerStore = defineStore("player", () => {
     r.scoreInfoColor = isDark ? c(255, 255, 255, 255) : c(0, 0, 0, 255);
 
     r.barNumberColor = isDark ? c(255, 255, 255, 255) : c(200, 0, 0, 255);
-
+    api.value.updateSettings();
     api.value.render();
   }
   /*
@@ -296,7 +296,6 @@ export const usePlayerStore = defineStore("player", () => {
   function resetLoop() {
     loopRange.value = null;
   }
-
 
   function toggleCountIn() {
     isCountIn.value = !isCountIn.value;

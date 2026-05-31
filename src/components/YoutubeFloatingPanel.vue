@@ -32,6 +32,7 @@ function saveUrl(): void {
   yt.setUrl(input.value);
   dialog.value = false;
   input.value = "";
+  panelOpen.value = true;
 }
 </script>
 

@@ -71,19 +71,8 @@ export function useAlphaTab(
     });
 
     api.playerPositionChanged.on((position) => {
-      // store.currentTime = position.currentTime;
       store.updatePlayerPosition(position.currentTime);
-      // const cursor = wrapperRef.value?.querySelector(
-      //   ".at-cursor-bar",
-      // ) as HTMLElement;
-
-      // if (!cursor || !wrapperRef.value) return;
-
-      // cursor.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "nearest",
-      //   inline: "center",
-      // });
+      
     });
 
     /*
@@ -148,5 +137,6 @@ export function useAlphaTab(
   return {
     init,
     destroy,
+    
   };
 }
