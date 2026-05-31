@@ -13,7 +13,7 @@ const vuetifyTheme = useTheme()
 watch(
   () => themeStore.currentTheme,
   (theme) => {
-    vuetifyTheme.global.name.value = theme;
+    vuetifyTheme.change(theme);
   },
   { immediate: true }
 );
